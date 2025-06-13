@@ -1,54 +1,96 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📊 Simulasi Trading Frontend (React + Vite + TypeScript)
 
-Currently, two official plugins are available:
+Aplikasi frontend ini digunakan untuk mengatur strategi dan risiko trading, lalu mengirimkannya ke backend untuk disimpan dan digunakan sebagai dasar evaluasi sinyal dari TradingView.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🧩 Fitur Aplikasi
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+✅ Form konfigurasi strategi trading  
+✅ Input parameter strategi:  
+- Symbol (default: `BTCUSDT`)  
+- Timeframe (default: `5m`)  
+- +DI Threshold (default: `25`)  
+- –DI Threshold (default: `20`)  
+- ADX Minimum (default: `20`)  
+- Take Profit % (default: `2`)  
+- Stop Loss % (default: `1`)  
+- Leverage (default: `10x`)  
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+✅ Tombol "Simpan Konfigurasi"  
+✅ Menampilkan konfigurasi aktif yang tersimpan di backend  
+✅ (Opsional) Tombol reset/ubah konfigurasi  
+
+---
+
+## 🛠 Teknologi yang Digunakan
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS (optional styling)
+- Axios untuk komunikasi dengan backend
+
+---
+
+## 🚀 Cara Menjalankan Aplikasi
+
+### 1. Clone Repo
+```bash
+git clone https://github.com/andri-devoloper/fornd-simulasi--treding.git
+cd fornd-simulasi--treding
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### 2. Install Dependensi
+```bash
+npm install
 ```
+
+### 3. Jalankan Server Lokal
+```bash
+npm run dev
+```
+
+Frontend akan berjalan di `http://localhost:5173`
+
+---
+
+## 🔗 Komunikasi dengan Backend
+
+Pastikan backend berjalan di `http://localhost:3000` atau ubah `BASE_URL` di file `services/api.ts` atau `.env` jika menggunakan:
+
+```ts
+const BASE_URL = 'http://localhost:3000';
+```
+
+### Endpoint yang digunakan:
+- `POST /config` untuk menyimpan konfigurasi
+- `GET /config` untuk menampilkan konfigurasi aktif
+
+---
+
+## 📂 Struktur Folder (Contoh)
+
+```
+src/
+│
+├── components/
+│   └── Layouts         # Form input strategi
+│
+├── services/
+│   └── api.ts                 # Axios config & API calls
+│
+├── pages/
+│   └── Dashboard.tsx               # Halaman utama
+│
+├── App.tsx
+└── main.tsx
+```
+
+---
+
+## 👨‍💻 Author
+
+**Andri**  
+GitHub: [https://github.com/andri-devoloper](https://github.com/andri-devoloper)
